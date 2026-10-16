@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="calculadora.CalculadoraControlo"
+            prefWidth="320" prefHeight="480"
+            style="-fx-background-color: #2b2b2b;">
+
+    <children>
+        <ColorPicker fx:id="colorPicker" layoutX="220" layoutY="10" prefWidth="90"/>
+
+        <Label fx:id="display" text="0" layoutX="10" layoutY="50"
+               prefWidth="300" prefHeight="60"/>
+
+        <GridPane layoutX="10" layoutY="130" hgap="5" vgap="5">
+            <Button text="7" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Button text="8" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Button text="9" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <Button text="÷" onAction="#onOperador" prefWidth="70" prefHeight="60" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+            <Button text="4" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Button text="5" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Button text="6" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <Button text="×" onAction="#onOperador" prefWidth="70" prefHeight="60" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+            <Button text="1" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Button text="2" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Button text="3" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <Button text="-" onAction="#onOperador" prefWidth="70" prefHeight="60" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+            <Button text="0" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Button text="." onAction="#onPonto" prefWidth="70" prefHeight="60" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Button text="C" onAction="#onLimpar" prefWidth="70" prefHeight="60" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+            <Button text="+" onAction="#onOperador" prefWidth="70" prefHeight="60" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+
+            <Button text="=" onAction="#onIgual" prefWidth="300" prefHeight="60" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        </GridPane>
+    </children>
+</AnchorPane>
