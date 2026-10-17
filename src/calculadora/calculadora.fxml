@@ -2,41 +2,90 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="calculadora.CalculadoraControlo"
-            prefWidth="320" prefHeight="480"
-            style="-fx-background-color: #2b2b2b;">
+            prefWidth="360" prefHeight="560"
+            stylesheets="@estilo.css"
+            styleClass="root">
 
     <children>
-        <ColorPicker fx:id="colorPicker" layoutX="220" layoutY="10" prefWidth="90"/>
+        <VBox spacing="4" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+              AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
 
-        <Label fx:id="display" text="0" layoutX="10" layoutY="50"
-               prefWidth="300" prefHeight="60"/>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <ColorPicker fx:id="colorPicker" prefWidth="100"/>
+            </HBox>
 
-        <GridPane layoutX="10" layoutY="130" hgap="5" vgap="5">
-            <Button text="7" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <Button text="8" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-            <Button text="9" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-            <Button text="÷" onAction="#onOperador" prefWidth="70" prefHeight="60" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label fx:id="historico" text="" styleClass="historico" maxWidth="Infinity"/>
+            <Label fx:id="display" text="0" styleClass="display" maxWidth="Infinity" prefHeight="70"/>
 
-            <Button text="4" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <Button text="5" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-            <Button text="6" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-            <Button text="×" onAction="#onOperador" prefWidth="70" prefHeight="60" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <HBox spacing="4" alignment="CENTER">
+                <Button text="MC" styleClass="btn-memoria" prefWidth="60" prefHeight="30"/>
+                <Button text="MR" styleClass="btn-memoria" prefWidth="60" prefHeight="30"/>
+                <Button text="M+" styleClass="btn-memoria" prefWidth="60" prefHeight="30"/>
+                <Button text="M-" styleClass="btn-memoria" prefWidth="60" prefHeight="30"/>
+                <Button text="MS" styleClass="btn-memoria" prefWidth="60" prefHeight="30"/>
+            </HBox>
 
-            <Button text="1" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <Button text="2" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-            <Button text="3" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-            <Button text="-" onAction="#onOperador" prefWidth="70" prefHeight="60" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            <GridPane hgap="4" vgap="4" VBox.vgrow="ALWAYS">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints percentHeight="20"/>
+                </rowConstraints>
 
-            <Button text="0" onAction="#onNumero" prefWidth="70" prefHeight="60" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <Button text="." onAction="#onPonto" prefWidth="70" prefHeight="60" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-            <Button text="C" onAction="#onLimpar" prefWidth="70" prefHeight="60" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
-            <Button text="+" onAction="#onOperador" prefWidth="70" prefHeight="60" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+                <Button text="\%" onAction="#onPorcento" styleClass="btn-funcao" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Button text="CE" onAction="#onLimpar" styleClass="btn-funcao" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Button text="C" onAction="#onLimpar" styleClass="btn-funcao" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <Button text="⌫" onAction="#onApagar" styleClass="btn-funcao" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
 
-            <Button text="=" onAction="#onIgual" prefWidth="300" prefHeight="60" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
-        </GridPane>
+                <Button text="1/x" onAction="#onInverso" styleClass="btn-funcao" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Button text="x²" onAction="#onQuadrado" styleClass="btn-funcao" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Button text="√x" onAction="#onRaiz" styleClass="btn-funcao" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <Button text="÷" onAction="#onOperador" styleClass="btn-operador" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <Button text="7" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Button text="8" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Button text="9" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                <Button text="×" onAction="#onOperador" styleClass="btn-operador" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+                <Button text="4" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Button text="5" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Button text="6" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                <Button text="-" onAction="#onOperador" styleClass="btn-operador" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+
+                <Button text="1" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Button text="2" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Button text="3" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+                <Button text="+" onAction="#onOperador" styleClass="btn-operador" maxWidth="Infinity" maxHeight="Infinity" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+            </GridPane>
+
+            <GridPane hgap="4" vgap="4" prefHeight="70">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+                <Button text="+/-" onAction="#onInverterSinal" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.columnIndex="0"/>
+                <Button text="0" onAction="#onNumero" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.columnIndex="1"/>
+                <Button text="," onAction="#onPonto" styleClass="btn-numero" maxWidth="Infinity" maxHeight="Infinity" GridPane.columnIndex="2"/>
+                <Button text="=" onAction="#onIgual" styleClass="btn-igual" maxWidth="Infinity" maxHeight="Infinity" GridPane.columnIndex="3"/>
+            </GridPane>
+        </VBox>
     </children>
 </AnchorPane>
